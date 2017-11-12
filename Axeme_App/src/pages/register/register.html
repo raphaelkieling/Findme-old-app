@@ -1,0 +1,82 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registrar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Tipo de usuário</ion-label>
+      <ion-select (ionChange)="mudarFormulario($event)">
+        <ion-option value="client">Cliente</ion-option>
+        <ion-option value="service">Prestador de serviço</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="tipoUsuario === 'client'">
+    <form [formGroup]="formCliente">
+      <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
+      <ion-input type="text" placeholder="Telefone" formControlName="telefone"></ion-input>
+      <ion-input type="text" placeholder="CPF" formControlName="cpf"></ion-input>
+    </form>
+
+    <form [formGroup]="formUsuario">
+      <ion-input type="text" placeholder="E-mail" formControlName="email"></ion-input>
+      <ion-input type="text" placeholder="Senha" formControlName="senha"></ion-input>
+    </form>
+    
+    <button ion-button block round [disabled]="false" (click)="finalizar()">FINALIZAR</button>
+  </ion-list>
+
+  <ion-list *ngIf="tipoUsuario === 'service'">
+    <p>
+      Olá! Achamos demais você estar querendo ser um dos nossos parceiros, mas para que a gente consiga manter a qualidade, assim
+      que tu te cadastrar iremos analisar se está tudo certo e se realmente você pode fazer parte da comunidade.
+    </p>
+    <p>
+      Não se preocupe, isso é apenas para evitar contas falsas ou serviços enganosos. Estamos ansiosos para sabe o que você faz!
+    </p>
+    <p>Abraço. Equipe Findme</p>
+
+    <img [src]="image">
+    <button ion-button block (click)="carregarFoto()">Carregar foto</button>
+    <br>
+
+    <form [formGroup]="formCliente">
+      <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
+      <ion-input type="text" placeholder="Telefone" formControlName="telefone"></ion-input>
+      <ion-input type="text" placeholder="CPF" formControlName="cpf"></ion-input>
+    </form>
+
+    <form [formGroup]="formPrestador">
+      <ion-input type="text" placeholder="CNPJ" formControlName="cnpj"></ion-input>
+      <ion-item>
+        <ion-label>Categoria</ion-label>
+        <ion-select formControlName="categoria">
+          <ion-option *ngFor="let cat of categorias" [value]="cat.id">{{cat.nome}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-textarea placeholder="Descrição completa do seu serviço ou da sua história" rows="15" formControlName="descricao"></ion-textarea>
+    </form>
+
+    <form [formGroup]="formUsuario">
+      <ion-input type="text" placeholder="E-mail" formControlName="email"></ion-input>
+      <ion-input type="text" placeholder="Senha" formControlName="senha"></ion-input>
+    </form>
+
+    <button ion-button block round [disabled]="false" (click)="finalizar()">FINALIZAR</button>
+
+  </ion-list>
+
+</ion-content>

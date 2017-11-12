@@ -1,0 +1,31 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+  <div class="fullscreen-color"></div>
+  <h1 class="title-app">FINDME</h1>
+
+  <form [formGroup]="loginForm">
+    <ion-input formControlName="email" placeholder="Usuário ou E-mail"></ion-input>
+    <ion-input formControlName="senha" placeholder="Senha"></ion-input>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <input type="checkbox" formControlName="salvarInfo" [(ngModel)]="salvarInfo"> <span>Manter Conectado</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <br>
+
+    <button ion-button primary round block (click)="entrar()">Entrar</button>
+    <p (click)="queroMeCadastrar()">Quero me cadastrar</p>
+  </form>
+
+
+
+</ion-content>

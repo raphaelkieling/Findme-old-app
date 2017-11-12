@@ -1,0 +1,48 @@
+page-initial {
+    ion-content{
+        background:url('../../assets/imgs/variados/restaurant.jpg');
+        background-size: cover;
+        background-repeat: none;
+        color:white !important;
+        text-align: center;
+        position: relative;
+    }
+
+    .btn{
+        font-size: 20px;
+        padding: 25px;
+    }
+
+    .forms{
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+
+    .fullscreen-color{
+        position: fixed;
+        height: 100vh;
+        width:100%;
+        background:#121212;
+        opacity: 0.6;
+        z-index: -1;
+    }
+
+    .title-app{
+        margin-top: 50%; 
+        font-size: 70px;
+    }
+
+    h5{
+        text-transform: uppercase;
+        position: absolute;
+        top: 0;
+        font-size: 16px;
+        right: 20px;
+        background: orange;
+        margin-top: 65%;
+        padding: 5px;
+    }
+}

@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Findme Torres
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="getCategorias()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let categoria of categorias">
+    <img [src]="url(categoria.imagem.url)" />
+    <ion-card-content>
+      <p>
+        {{categoria.nome}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
