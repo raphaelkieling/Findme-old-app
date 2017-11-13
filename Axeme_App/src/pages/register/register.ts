@@ -129,6 +129,7 @@ export class RegisterPage {
     }
 
     if (this.formPrestador.dirty) {
+      this.formCliente.get('permissao').setValue('prestador')
       usuario.pessoa.prestador = {
         categoria: this.formPrestador.get('categoria').value,
         cnpj: this.formPrestador.get('cnpj').value,
@@ -190,6 +191,7 @@ export class RegisterPage {
       cpf: [null, Validators.required],
       rg: [],
       idade: [],
+      permissao: ['cliente'],
       imagem: []
     })
   }

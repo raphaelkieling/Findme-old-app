@@ -1,3 +1,4 @@
+import { PrestadoresPage } from './../pages/prestadores/prestadores';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 
@@ -13,10 +14,13 @@ import { HomePage } from '../pages/home/home';
 import { InitialPage } from '../pages/initial/initial';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { BaseProvider } from '../providers/base/base';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Camera } from '@ionic-native/camera';
 import { LoginPage } from '../pages/login/login';
 import { AmbienteProvider } from '../providers/ambiente/ambiente';
+import { PrestadorProvider } from '../providers/prestador/prestador';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Interceptor } from '../providers/interceptor';
 
 @NgModule({
   declarations: [
@@ -24,11 +28,12 @@ import { AmbienteProvider } from '../providers/ambiente/ambiente';
     HomePage,
     InitialPage,
     RegisterPage,
-    LoginPage
+    LoginPage,
+    PrestadoresPage
   ],
   imports: [
     BrowserModule,
-    HttpModule,    
+    HttpClientModule,    
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -37,7 +42,8 @@ import { AmbienteProvider } from '../providers/ambiente/ambiente';
     HomePage,
     InitialPage,
     RegisterPage,
-    LoginPage
+    LoginPage,
+    PrestadoresPage
   ],
   providers: [
     StatusBar,
@@ -48,7 +54,13 @@ import { AmbienteProvider } from '../providers/ambiente/ambiente';
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BaseProvider,
-    AmbienteProvider
+    AmbienteProvider,
+    PrestadorProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true,
+    }
   ]
 })
 export class AppModule {}

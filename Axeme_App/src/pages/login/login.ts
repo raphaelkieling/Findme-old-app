@@ -64,7 +64,7 @@ export class LoginPage {
       .subscribe(res => {
         console.log('[login]', res);
         localStorage.setItem('token', res.token);
-        localStorage.setItem('user', res.user);
+        localStorage.setItem('user', JSON.stringify(res.user.pessoa));
 
         this.navCtrl.push(HomePage);
         loading.dismiss()

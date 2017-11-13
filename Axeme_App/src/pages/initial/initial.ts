@@ -2,6 +2,7 @@ import { LoginPage } from './../login/login';
 import { RegisterPage } from './../register/register';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AmbienteProvider } from '../../providers/ambiente/ambiente';
 
 /**
  * Generated class for the InitialPage page.
@@ -18,14 +19,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class InitialPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+   
   }
 
 
-  goToRegister(){
+  goToRegister() {
     this.navCtrl.push(RegisterPage);
   }
 
-  goToLogin(){
+  goToLogin() {
     this.navCtrl.push(LoginPage);
   }
 

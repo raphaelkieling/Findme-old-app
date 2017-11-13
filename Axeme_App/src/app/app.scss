@@ -25,6 +25,15 @@ ion-input,ion-textarea,ion-select{
     border-radius: 10px;
     margin-bottom: 10px;
 }
+
+.toolbar-background{
+    background-color: #404040;
+}
+
+.toolbar-title,.toolbar button{
+    color:white;
+}
+
 .select-md .select-icon .select-icon-inner {
     left: 8px;
 }

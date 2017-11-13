@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import { JwtHelper } from 'angular2-jwt';
 /*
   Generated class for the AmbienteProvider provider.
 
@@ -11,11 +10,25 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AmbienteProvider {
 
-  constructor(public http: Http) {
-    console.log('Hello AmbienteProvider Provider');
+  isAutenticado() {
+    if (this.token()) {
+      if (this.decodificaToken) {
+        return true;
+      }
+    }
+    return false;
   }
 
-  isAutenticado() {
-    return (localStorage.getItem('token')) ? true : false;
+  token(): string {
+    return localStorage.getItem('token');
+  }
+
+  private decodificaToken() {
+    let jwt = new JwtHelper();
+    return jwt.decodeToken(this.token());
+  }
+
+  get User() {
+    return this.decodificaToken().user;
   }
 }

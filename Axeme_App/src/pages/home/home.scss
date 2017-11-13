@@ -1,9 +1,25 @@
 page-home {
-    ion-card {
-        position: relative;
+      ion-card {
         text-align: center;
+        background: #404040 !important;
       }
-    
+
+      .card {
+        padding: 10px 10px 0 10px;
+        border-radius: 5px;
+      }
+
+      .card p {
+        text-transform: uppercase;
+        color: white;
+      }
+
+      ion-card.card.card-md {
+        margin: 0px;
+        margin: 10px auto;
+        width: 95%;
+      }
+
       .card-title {
         position: absolute;
         top: 36%;
