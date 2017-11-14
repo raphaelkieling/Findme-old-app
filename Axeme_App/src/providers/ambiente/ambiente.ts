@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { JwtHelper } from 'angular2-jwt';
+import { EventEmitter } from '@angular/core';
+import { InitialPage } from '../../pages/initial/initial';
 /*
   Generated class for the AmbienteProvider provider.
 
@@ -10,6 +12,8 @@ import { JwtHelper } from 'angular2-jwt';
 @Injectable()
 export class AmbienteProvider {
 
+  reloadCategorias = new EventEmitter();
+  constructor() { }
   isAutenticado() {
     if (this.token()) {
       if (this.decodificaToken) {

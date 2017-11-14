@@ -78,12 +78,12 @@ export class RegisterPage {
 
   carregarFoto() {
     const options: CameraOptions = {
-      quality: 100,
+      quality: 60,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
-
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      allowEdit:true
     }
     let loader = this.criarLoader();
     loader.present();
@@ -109,7 +109,7 @@ export class RegisterPage {
     loader.present();
 
     this.colocaImagemNaPessoa();
-
+    console.log(this.formCliente);
     let usuario: Usuario = {
       email: this.formUsuario.get('email').value,
       senha: this.formUsuario.get('senha').value,
@@ -119,6 +119,7 @@ export class RegisterPage {
         cpf: this.formCliente.get('cpf').value,
         rg: this.formCliente.get('rg').value,
         idade: this.formCliente.get('idade').value,
+        permissao:'cliente'
       }
     }
 
@@ -126,16 +127,20 @@ export class RegisterPage {
       usuario.pessoa.imagem = {
         url: this.formCliente.get('imagem').value
       }
+      console.log(this.formCliente.get('imagem').value);
     }
 
     if (this.formPrestador.dirty) {
-      this.formCliente.get('permissao').setValue('prestador')
+      this.formCliente.get('permissao').setValue('prestador');
+      usuario.pessoa.permissao = 'prestador';
       usuario.pessoa.prestador = {
         categoria: this.formPrestador.get('categoria').value,
         cnpj: this.formPrestador.get('cnpj').value,
         descricao: this.formPrestador.get('descricao').value
       }
     }
+
+    console.log(this.formCliente);
 
     this.baseService.post('usuario', usuario)
       .subscribe(res => {
@@ -157,30 +162,11 @@ export class RegisterPage {
         loader.dismiss();
       })
 
+      console.log(usuario)
+
   }
 
-  // async uploadImagem(): Promise<any> {
-  //   const fileTransfer: FileTransferObject = this.transfer.create();
-  //   let options: FileUploadOptions = {
-  //     fileKey: 'imagem',
-  //     fileName: 'name.jpg',
-  //     mimeType: "multipart/form-data"
-  //   }
-
-  //   return await fileTransfer.upload(this.image, `${this.baseService.baseUrlAPI}/uploadFile`, options);
-  // }
-
   colocaImagemNaPessoa() {
-    // if (this.image.length > 0) {
-    //   let imagemUrl = ''
-
-    //   return await this.uploadImagem()
-    //     .then(imagem => {
-    //       if (imagem['response'])
-    //         imagemUrl = JSON.parse(imagem.response).data;
-    //       this.formCliente.get('imagem').setValue(imagemUrl);
-    //     })
-    // }
     this.formCliente.get('imagem').setValue(this.image);
   }
 

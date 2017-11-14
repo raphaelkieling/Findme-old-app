@@ -6,6 +6,9 @@ import { Categoria } from '../../domain/categoria';
 import { InitialPage } from '../initial/initial';
 import { LoadingController } from 'ionic-angular';
 import { AmbienteProvider } from '../../providers/ambiente/ambiente';
+import { ConfigPage } from '../config/config';
+import { CategoriasPage } from '../categorias/categorias';
+import { FavoritosPage } from '../favoritos/favoritos';
 
 @Component({
   selector: 'page-home',
@@ -13,7 +16,9 @@ import { AmbienteProvider } from '../../providers/ambiente/ambiente';
 })
 export class HomePage {
 
-  categorias: Categoria[] = []
+  tab1 = CategoriasPage
+  tab2 = FavoritosPage
+
   constructor(
     public navCtrl: NavController,
     public baseService: BaseProvider,
@@ -23,40 +28,13 @@ export class HomePage {
   }
 
   ngOnInit() {
-    this.getCategorias();
   }
 
-  url(imagem) {
-    return `${this.baseService.baseUrlAPI}/images/${imagem}`;
+  goConfig() {
+    this.navCtrl.push(ConfigPage);
   }
 
-  goToPrestadores(categoria){
-    this.navCtrl.push(PrestadoresPage,{
-      categoria
-    });
-  }
-
-  getCategorias() {
-    let loader = this.loadingCtrl.create({
-      content:'Carregando Categorias...'
-    });
-
-    loader.present();
-
-
-    this.categorias = [];
-    this.baseService.getAll('categoriaservico')
-      .subscribe(categorias => {
-        this.categorias = categorias
-        loader.dismiss();
-      }, err => {
-        console.log(err);
-        loader.dismiss();
-      })
-  }
-
-  logout() {
-    localStorage.removeItem('token')
-    this.navCtrl.push(InitialPage);
+  reloadCategorias(){
+    this.ambienteS.reloadCategorias.emit();
   }
 }

@@ -35,7 +35,7 @@ ion-input,ion-textarea,ion-select{
 }
 
 .select-md .select-icon .select-icon-inner {
-    left: 8px;
+    left: -10px;
 }
 
 .fullscreen-color{
@@ -45,4 +45,13 @@ ion-input,ion-textarea,ion-select{
     background:#121212;
     opacity: 0.6;
     z-index: -1;
+}
+
+.tab-button-text{
+    color:white;
+}
+
+.tabbar.show-tabbar {
+    background: #404040;
+    color: white;
 }

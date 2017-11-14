@@ -15,8 +15,7 @@ import { HttpClient } from '@angular/common/http';
 */
 @Injectable()
 export class BaseProvider {
-  // "http://192.168.1.7:4201" 
-  public baseUrlAPI = "http://192.168.101.29:1337";
+  public baseUrlAPI = "https://evening-meadow-61163.herokuapp.com";
 
   constructor(public http: HttpClient, public ambienteS: AmbienteProvider) {
   }

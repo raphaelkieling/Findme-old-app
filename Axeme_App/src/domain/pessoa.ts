@@ -7,6 +7,8 @@ export interface Pessoa extends Base{
     telefone: string;
     cpf: string;
     rg: string;
+    // sexo:string;
+    permissao:string;
     idade?: string;
     imagem?: Imagem;
     prestador?: Prestador;
