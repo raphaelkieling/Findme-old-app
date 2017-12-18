@@ -1,0 +1,40 @@
+page-prestadores {
+    .card-loader{
+        width: 96%;
+        height: 130px;
+        background: #d8d8d8;
+        border-radius: 5px;
+        margin: 0 auto;
+        padding: 10px;
+        position: relative;
+        animation: 1s card-load both;
+        margin-bottom: 10px;
+    }
+
+    .card-loader-header {
+        height: 20px;
+        width: 100px;
+        background: #ededed;
+        border-radius: 25px;
+    }
+
+    .card-loader-call {
+        height: 30px;
+        background:#ededed;
+        position: absolute;
+        bottom: 10px;
+        width: 51px;
+        border-radius: 134px;
+    }
+
+    @keyframes card-load {
+        0%{
+            opacity: 0;
+            left:-30px;
+        }
+        100%{
+            left:0px;
+            opacity: 1;
+        }
+    }
+}
